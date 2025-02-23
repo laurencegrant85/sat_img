@@ -47,8 +47,8 @@ def compare_vdvi_between_years(a,b):
     im1.show()
     ImageChops.composite(blank,im1,dif1).show()
 
-year_1=3
-year_2=4
+year_1=1
+year_2=2
 
 print("Comparing VDVI between years 202"+str(year_1)+" and 202"+str(year_2))
 
