@@ -24,7 +24,9 @@ def VDVI(image):
     vdvi=np.zeros(shape=(len(array),len(array[0])), dtype=np.uint8)
     for i in range(len(array)):
         for j in range(len(array[i])):
-            print(array[i][j])
+            if all(i <0.0001 for i in array[i][j]):
+                value = 0.0
+                continue
             value=(((2*array[i][j][1]-array[i][j][0]-array[i][j][2]))/((2*array[i][j][1]+array[i][j][0]+array[i][j][2])))
             vdvi[i][j] = convert_range(value)
             #vdvi ranges from -1 to 1 need to convert to 0-255
@@ -42,8 +44,7 @@ def compare_vdvi_between_years(a,b):
 
     dif1 = dif1.filter(ImageFilter.MinFilter)
     blank = im1.point(lambda _: 0)
-
-
+    im1.show()
     ImageChops.composite(blank,im1,dif1).show()
 
 year_1=3
